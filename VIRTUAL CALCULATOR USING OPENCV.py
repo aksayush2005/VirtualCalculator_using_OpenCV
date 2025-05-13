@@ -12,6 +12,7 @@ def calculator_UI(frame,button_list):
         cv2.rectangle(frame,(100*y+65,100*x+65),(100*y+w+65,100*x+h+65),(0,255,255),-1)
         cv2.putText(frame,str(button.value),(100*y+110,100*x+110),cv2.FONT_HERSHEY_PLAIN,4,(255,255,255),2)
         if results.right_hand_landmarks:
+
             right_index_tip=results.right_hand_landmarks.landmark[8]
             right_index_tip_x=right_index_tip.x
             right_index_tip_y=right_index_tip.y
@@ -22,11 +23,12 @@ def calculator_UI(frame,button_list):
             if 100*y+65<right_index_tip_x*frame_width<100*y+w+65 and 100*x+65 <right_index_tip_y*frame_height<100*x+h+65:
                 cv2.rectangle(frame,(100*y+65,100*x+65),(100*y+w+65,100*x+h+65),(0,0,255),-1)
                 cv2.putText(frame, str(button.value), (100 * y + 110, 100 * x + 110), cv2.FONT_HERSHEY_PLAIN, 4,(0,0, 255), 2)
-                if distance_right<55:
+                time.sleep(0.15)
+                if distance_right<50:
                     cv2.rectangle(frame, (100 * y + 65, 100 * x + 65), (100 * y + w + 65, 100 * x + h + 65),(255, 255, 0), -1)
                     #cv2.putText(frame,str(distance),(60,60),cv2.FONT_HERSHEY_PLAIN,4,(255,255,0),2)
                     cv2.putText(frame, str(button.value), (100 * y + 110, 100 * x + 110), cv2.FONT_HERSHEY_PLAIN, 4,(255,255,0), 2)
-                    time.sleep(0.15)
+
                     result=calculator(button.value)
                     cv2.putText(frame,str(result),(700,160),cv2.FONT_HERSHEY_PLAIN,4,(255,255,255),2)
 
