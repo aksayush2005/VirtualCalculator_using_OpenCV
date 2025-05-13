@@ -1,5 +1,6 @@
 import cv2
 import mediapipe as mp
+import time
 cap=cv2.VideoCapture(0)
 cap.set(3,1400)
 cap.set(4,800)
@@ -23,8 +24,37 @@ def calculator_UI(frame,button_list):
                 cv2.putText(frame, str(button.value), (100 * y + 70, 100 * x + 70), cv2.FONT_HERSHEY_PLAIN, 4,(0,0, 255), 2)
                 if distance<56:
                     cv2.rectangle(frame, (100 * y + 25, 100 * x + 25), (100 * y + w + 25, 100 * x + h + 25),(255, 255, 0), 2)
-                    cv2.putText(frame,str(distance),(60,60),cv2.FONT_HERSHEY_PLAIN,4,(255,255,0),2)
+                    #cv2.putText(frame,str(distance),(60,60),cv2.FONT_HERSHEY_PLAIN,4,(255,255,0),2)
                     cv2.putText(frame, str(button.value), (100 * y + 70, 100 * x + 70), cv2.FONT_HERSHEY_PLAIN, 4,(255,255,0), 2)
+                    time.sleep(0.25)
+                    result=calculator(button.value)
+                    cv2.putText(frame,str(result),(160,160),cv2.FONT_HERSHEY_PLAIN,4,(255,255,255),2)
+
+exp_list=[]
+def calculator(value):
+    exp=''
+
+    if value != '=' and value != 'C':
+            exp_list.append(value)
+            return " ".join(str(i) for i  in exp_list)
+
+    else:
+
+        if value == '=':
+                for i in exp_list:
+                    exp=exp+str(i)
+
+                exp=eval(exp)
+                return exp
+        elif value == 'C':
+                exp_list.clear()
+                return ""
+
+        return "Invalid input"
+
+
+
+
 class Buttons:
     def __init__(self,pos,value,size=(100,100)):
         self.pos=pos
