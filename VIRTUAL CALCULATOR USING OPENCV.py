@@ -10,7 +10,7 @@ def calculator_UI(frame,button_list):
     for button in button_list:
         x,y=button.pos
         w,h=button.size
-        cv2.rectangle(frame,(100*y+65,100*x+65),(100*y+w+65,100*x+h+65),(0,255,255),-1)
+        cv2.rectangle(frame,(100*y+65,100*x+65),(100*y+w+65,100*x+h+65),(50,50,50),-1)
         cv2.putText(frame,str(button.value),(100*y+110,100*x+110),cv2.FONT_HERSHEY_PLAIN,4,(255,255,255),2)
         if results.right_hand_landmarks:
 
@@ -22,16 +22,16 @@ def calculator_UI(frame,button_list):
             right_thumb_tip_y=right_thumb_tip.y
             distance_right= ((((right_index_tip_x - right_thumb_tip_x) * frame_width) ** 2 + ((right_index_tip_y - right_thumb_tip_y) * frame_height) ** 2) )**0.5
             if 100*y+65<right_index_tip_x*frame_width<100*y+w+65 and 100*x+65 <right_index_tip_y*frame_height<100*x+h+65:
-                cv2.rectangle(frame,(100*y+65,100*x+65),(100*y+w+65,100*x+h+65),(0,0,255),-1)
-                cv2.putText(frame, str(button.value), (100 * y + 110, 100 * x + 110), cv2.FONT_HERSHEY_PLAIN, 4,(0,0, 255), 2)
+                cv2.rectangle(frame,(100*y+65,100*x+65),(100*y+w+65,100*x+h+65),(220,205,105),-1)
+                cv2.putText(frame, str(button.value), (100 * y + 110, 100 * x + 110), cv2.FONT_HERSHEY_PLAIN, 4,(0,0,0), 2)
                 time.sleep(0.25)
                 if distance_right<50:
-                    cv2.rectangle(frame, (100 * y + 65, 100 * x + 65), (100 * y + w + 65, 100 * x + h + 65),(255, 255, 0), -1)
+                    cv2.rectangle(frame, (100 * y + 65, 100 * x + 65), (100 * y + w + 65, 100 * x + h + 65),(114,88, 2), -1)
                     #cv2.putText(frame,str(distance),(60,60),cv2.FONT_HERSHEY_PLAIN,4,(255,255,0),2)
-                    cv2.putText(frame, str(button.value), (100 * y + 110, 100 * x + 110), cv2.FONT_HERSHEY_PLAIN, 4,(255,255,0), 2)
+                    cv2.putText(frame, str(button.value), (100 * y + 110, 100 * x + 110), cv2.FONT_HERSHEY_PLAIN, 4,(255,255,255), 2)
 
                     result=calculator(button.value)
-        cv2.putText(frame,str(result),(700,160),cv2.FONT_HERSHEY_PLAIN,4,(255,255,255),2)
+        cv2.putText(frame,str(result),(700,160),cv2.FONT_HERSHEY_PLAIN,4,(0,0,0),4)
 
 result= ''
 exp_list=[]
