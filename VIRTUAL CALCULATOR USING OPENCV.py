@@ -6,6 +6,7 @@ cap.set(3,1400)
 cap.set(4,800)
 def calculator_UI(frame,button_list):
     frame_height,frame_width=frame.shape[:2]
+    global result
     for button in button_list:
         x,y=button.pos
         w,h=button.size
@@ -23,16 +24,16 @@ def calculator_UI(frame,button_list):
             if 100*y+65<right_index_tip_x*frame_width<100*y+w+65 and 100*x+65 <right_index_tip_y*frame_height<100*x+h+65:
                 cv2.rectangle(frame,(100*y+65,100*x+65),(100*y+w+65,100*x+h+65),(0,0,255),-1)
                 cv2.putText(frame, str(button.value), (100 * y + 110, 100 * x + 110), cv2.FONT_HERSHEY_PLAIN, 4,(0,0, 255), 2)
-                time.sleep(0.15)
+                time.sleep(0.25)
                 if distance_right<50:
                     cv2.rectangle(frame, (100 * y + 65, 100 * x + 65), (100 * y + w + 65, 100 * x + h + 65),(255, 255, 0), -1)
                     #cv2.putText(frame,str(distance),(60,60),cv2.FONT_HERSHEY_PLAIN,4,(255,255,0),2)
                     cv2.putText(frame, str(button.value), (100 * y + 110, 100 * x + 110), cv2.FONT_HERSHEY_PLAIN, 4,(255,255,0), 2)
 
                     result=calculator(button.value)
-                    cv2.putText(frame,str(result),(700,160),cv2.FONT_HERSHEY_PLAIN,4,(255,255,255),2)
+        cv2.putText(frame,str(result),(700,160),cv2.FONT_HERSHEY_PLAIN,4,(255,255,255),2)
 
-
+result= ''
 exp_list=[]
 def calculator(value):
     exp=''
