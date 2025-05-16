@@ -1,6 +1,10 @@
 import cv2
 import mediapipe as mp
 import time
+import pyttsx3
+import threading
+import copy
+engine = pyttsx3.init()
 cap=cv2.VideoCapture(0)
 cap.set(3,1400)
 cap.set(4,800)
@@ -33,6 +37,11 @@ def calculator_UI(frame,button_list):
                     result=calculator(button.value)
         cv2.putText(frame,str(result),(700,160),cv2.FONT_HERSHEY_PLAIN,4,(0,0,0),4)
 
+
+
+def speak(text):
+    engine.say(text)
+    engine.runAndWait()
 result= ''
 exp_list=[]
 def calculator(value):
@@ -40,22 +49,35 @@ def calculator(value):
     try:
         if value != '=' and value != 'C':
             exp_list.append(value)
+            if value=='-':
+                threading.Thread(target=speak,args=("minus",)).start()
+            elif value=='*':
+                threading.Thread(target=speak, args=("multiplied by",)).start()
+            elif value=="/":
+                threading.Thread(target=speak, args=("divided by",)).start()
+            else:
+                threading.Thread(target=speak, args=(value,)).start()
 
             return "".join(str(i) for i  in exp_list)
 
         else:
 
             if value == '=':
+
                 for i in exp_list:
                     exp=exp+str(i)
 
                 exp=eval(exp)
 
+                threading.Thread(target=speak,args=("equals",)).start()
+
                 return exp
             elif value == 'C':
                 exp_list.clear()
+                threading.Thread(target=speak,args=("Clear",)).start()
                 return ""
     except:
+        threading.Thread(target=speak,args=("Invalid Input",)).start()
         return "Invalid input"
 
 
@@ -91,12 +113,12 @@ with mp_holistic.Holistic(min_detection_confidence=0.7,min_tracking_confidence=0
     image=cv2.cvtColor(frame,cv2.COLOR_BGR2RGB)
     results=holistic.process(image)
     image=cv2.cvtColor(image,cv2.COLOR_RGB2BGR)
-    mp_drawing.draw_landmarks(frame,results.face_landmarks,mp_holistic.FACEMESH_TESSELATION,
-                              mp_drawing.DrawingSpec(color=[255,0,0],thickness=1,circle_radius=1),
-                              mp_drawing.DrawingSpec(color=[255,0,0],thickness=1,circle_radius=1))
+    #mp_drawing.draw_landmarks(frame,results.face_landmarks,mp_holistic.FACEMESH_TESSELATION,
+                              #mp_drawing.DrawingSpec(color=[255,0,0],thickness=1,circle_radius=1),
+                              #mp_drawing.DrawingSpec(color=[255,0,0],thickness=1,circle_radius=1))
     mp_drawing.draw_landmarks(frame,results.right_hand_landmarks,mp_holistic.HAND_CONNECTIONS)
     mp_drawing.draw_landmarks(frame, results.left_hand_landmarks, mp_holistic.HAND_CONNECTIONS)
-    mp_drawing.draw_landmarks(frame,results.pose_landmarks,mp_holistic.POSE_CONNECTIONS)
+    #mp_drawing.draw_landmarks(frame,results.pose_landmarks,mp_holistic.POSE_CONNECTIONS)
     '''if results.right_hand_landmarks:
         right_list=results.right_hand_landmarks.landmark
         x=right_list[8].x
@@ -106,5 +128,6 @@ with mp_holistic.Holistic(min_detection_confidence=0.7,min_tracking_confidence=0
     cv2.imshow("Video",frame)
     if cv2.waitKey(1) & 0xFF==ord("q"):
        break
+engine.stop()
 cap.release()
 cv2.destroyAllWindows()

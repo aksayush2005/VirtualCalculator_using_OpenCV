@@ -94,6 +94,8 @@
       <workItem from="1747152000148" duration="1304000" />
       <workItem from="1747192938021" duration="2078000" />
       <workItem from="1747200361778" duration="1410000" />
+      <workItem from="1747278892342" duration="2684000" />
+      <workItem from="1747373416536" duration="3283000" />
     </task>
     <servers />
   </component>
@@ -105,23 +107,23 @@
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/VIRTUAL CALCULATOR USING OPENCV.py</url>
-          <line>76</line>
+          <line>77</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/VIRTUAL CALCULATOR USING OPENCV.py</url>
-          <line>100</line>
+          <line>101</line>
           <option name="timeStamp" value="2" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/VIRTUAL CALCULATOR USING OPENCV.py</url>
-          <line>93</line>
+          <line>94</line>
           <option name="timeStamp" value="3" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/COMPUTER_VISION_PROJECT$VIRTUAL_CALCULATOR_USING_OPENCV.coverage" NAME="VIRTUAL CALCULATOR USING OPENCV Coverage Results" MODIFIED="1747201319244" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/COMPUTER_VISION_PROJECT$VIRTUAL_CALCULATOR_USING_OPENCV.coverage" NAME="VIRTUAL CALCULATOR USING OPENCV Coverage Results" MODIFIED="1747376786059" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
