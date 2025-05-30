@@ -95,7 +95,12 @@
       <workItem from="1747192938021" duration="2078000" />
       <workItem from="1747200361778" duration="1410000" />
       <workItem from="1747278892342" duration="2684000" />
-      <workItem from="1747373416536" duration="3283000" />
+      <workItem from="1747373416536" duration="4734000" />
+      <workItem from="1747383885859" duration="2202000" />
+      <workItem from="1747452833034" duration="1272000" />
+      <workItem from="1748270450728" duration="2203000" />
+      <workItem from="1748529867665" duration="5787000" />
+      <workItem from="1748571773440" duration="6746000" />
     </task>
     <servers />
   </component>
@@ -107,23 +112,23 @@
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/VIRTUAL CALCULATOR USING OPENCV.py</url>
-          <line>77</line>
+          <line>89</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/VIRTUAL CALCULATOR USING OPENCV.py</url>
-          <line>101</line>
+          <line>113</line>
           <option name="timeStamp" value="2" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/VIRTUAL CALCULATOR USING OPENCV.py</url>
-          <line>94</line>
+          <line>106</line>
           <option name="timeStamp" value="3" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/COMPUTER_VISION_PROJECT$VIRTUAL_CALCULATOR_USING_OPENCV.coverage" NAME="VIRTUAL CALCULATOR USING OPENCV Coverage Results" MODIFIED="1747376786059" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/COMPUTER_VISION_PROJECT$VIRTUAL_CALCULATOR_USING_OPENCV.coverage" NAME="VIRTUAL CALCULATOR USING OPENCV Coverage Results" MODIFIED="1748583197837" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
