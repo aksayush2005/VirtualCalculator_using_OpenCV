@@ -4,6 +4,12 @@ import time
 import pyttsx3
 import threading
 import numpy as np
+import pandas as pd
+from joblib import load
+model=load('knn_mnist.pkl')
+
+
+print(np.__version__)
 import copy
 engine = pyttsx3.init()
 cap=cv2.VideoCapture(0)
@@ -62,7 +68,7 @@ def calculator_UI(frame,button_list):
                     if (x0,y0)==(0,0):
                         x0,y0=xp,yp
 
-                    cv2.line(mask,(int(x0),int(y0)),(int(xp),int(yp)),(255,255,255),2)
+                    cv2.line(mask,(int(x0),int(y0)),(int(xp),int(yp)),(255,255,255),8)
                     x0,y0=xp,yp
 
 
@@ -86,46 +92,69 @@ def calculator(value):
     global mask
     exp=''
     global flag
-    try:
-        if value != '=' and value != 'C' and value != 'CAP' and value != 'E':
-            exp_list.append(value)
-            if value=='-':
-                threading.Thread(target=speak,args=("minus",)).start()
-            elif value=='*':
-                threading.Thread(target=speak, args=("multiplied by",)).start()
-            elif value=="/":
-                threading.Thread(target=speak, args=("divided by",)).start()
+    '''try:'''
 
-            else:
-                threading.Thread(target=speak, args=(value,)).start()
+    if value != '=' and value != 'C' and value != 'P' and value != 'E':
+        exp_list.append(value)
+        if value=='-':
+            threading.Thread(target=speak,args=("minus",)).start()
+        elif value=='*':
+            threading.Thread(target=speak, args=("multiplied by",)).start()
+        elif value=="/":
+            threading.Thread(target=speak, args=("divided by",)).start()
 
-            return "".join(str(i) for i  in exp_list)
-        elif value=='E' or value=='CAP':
+        else:
+            threading.Thread(target=speak, args=(value,)).start()
+
+        return "".join(str(i) for i  in exp_list)
+
+
+    elif value=='E' or value=='P':
             if value == 'E':
                 flag=1
                 mask=np.zeros((720,1280,3),np.uint8)
                 return "".join(str(i) for i  in exp_list)
+            elif value == 'P':
+                gray = cv2.cvtColor(mask, cv2.COLOR_BGR2GRAY)  # Convert to grayscale
+                _, thresh = cv2.threshold(gray, 50, 255, cv2.THRESH_BINARY)  # Binary threshold
+                contours, _ = cv2.findContours(thresh, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
 
 
-        else:
+                for cnt in contours:
 
-            if value == '=':
+                    x, y, w, h = cv2.boundingRect(cnt)
+                    if w < 5 or h < 5:
+                        continue  # skip small/noisy contours
+                    roi = thresh[y:y + h, x:x + w]
+                    if roi.size == 0:
+                        continue
+                    roi = cv2.resize(roi, (28, 28))
+                    roi = roi.reshape(1, -1).astype("float32") / 255.0
+                    pred = model.predict(roi)
+                    exp_list.append(pred[0])
+                    return "".join(str(i) for i in exp_list)
 
-                for i in exp_list:
-                    exp=exp+str(i)
 
-                exp=eval(exp)
 
-                threading.Thread(target=speak,args=("equals",)).start()
+    else:
 
-                return exp
-            elif value == 'C':
-                exp_list.clear()
-                threading.Thread(target=speak,args=("Clear",)).start()
-                return ""
-    except:
+        if value == '=':
+
+            for i in exp_list:
+                exp=exp+str(i)
+
+            exp=eval(exp)
+
+            threading.Thread(target=speak,args=("equals",)).start()
+
+            return exp
+        elif value == 'C':
+            exp_list.clear()
+            threading.Thread(target=speak,args=("Clear",)).start()
+            return ""
+    '''except:
         threading.Thread(target=speak,args=("Invalid Input",)).start()
-        return "Invalid input"
+        return "Invalid input"'''
 
 
 
