@@ -45,7 +45,7 @@ A Python-based virtual calculator that leverages OpenCV for real-time hand gestu
    python MNIST_ANN.py
    ```
 
-   This script trains an ANN on the MNIST dataset and saves the model.
+   This script trains an ANN on a custom dataset(custom_hand_data.zip) and saves the model.Ensure the dataset is present in the working directory.
 
 2. **Run the Virtual Calculator**:
 
@@ -60,11 +60,9 @@ A Python-based virtual calculator that leverages OpenCV for real-time hand gestu
 ## Project Structure
 
 ```
-├── MNIST_ANN.py       # Script to train the ANN model on the MNIST dataset
-├── calculator.py      # Main application script for the virtual calculator
-├── .gitignore         # Specifies files to ignore in version control
-├── .gitattributes     # Defines attributes for pathnames
-├── .idea/             # IDE-specific settings (can be ignored)
+├── MNIST_ANN.py         # Script to train the ANN model on the custom dataset
+├── calculator.py        # Main application script for the virtual calculator
+├── custom_hand_data.zip # Custom Dataset,ensure that it is present in the working directory
 ```
 
 ## Contributing
