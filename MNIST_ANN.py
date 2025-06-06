@@ -7,7 +7,7 @@ from tensorflow.keras.preprocessing.image import ImageDataGenerator
 
 IMG_SIZE = (720,1280)
 BATCH_SIZE = 32
-DATASET_PATH =r"C:\Users\DELL\Desktop\OpenCode Tasks\PROJECTS\COMPUTER VISION PROJECT\digit_data"
+DATASET_PATH =r"{Dataset Path}"
 
 datagen = ImageDataGenerator(validation_split=0.2, rescale=1./255)
 
@@ -59,4 +59,4 @@ history = model.fit(
     epochs=10
 )
 
-model.save("mnist_ann.h5")
+model.save("mnist_ann_on_custom.h5")
