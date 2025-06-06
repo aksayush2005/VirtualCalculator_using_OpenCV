@@ -7,7 +7,7 @@ from tensorflow.keras.preprocessing.image import ImageDataGenerator
 
 IMG_SIZE = (720,1280)
 BATCH_SIZE = 32
-DATASET_PATH =r"{Dataset Path}"
+DATASET_PATH =r"custom_hand_data.zip"
 
 datagen = ImageDataGenerator(validation_split=0.2, rescale=1./255)
 
