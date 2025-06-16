@@ -59,4 +59,4 @@ history = model.fit(
     epochs=10
 )
 
-model.save("mnist_ann_on_custom.h5")
+model.save("ann_on_custom.h5")
