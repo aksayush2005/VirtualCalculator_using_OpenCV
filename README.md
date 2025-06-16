@@ -42,7 +42,7 @@ A Python-based virtual calculator that leverages OpenCV for real-time hand gestu
    Before running the calculator, train the digit classification model:
 
    ```bash
-   python MNIST_ANN.py
+   python CUSTOM_ANN.py
    ```
 
    This script trains an ANN on a custom dataset(custom_hand_data.zip) and saves the model.Ensure the dataset is present in the working directory.
@@ -60,7 +60,7 @@ A Python-based virtual calculator that leverages OpenCV for real-time hand gestu
 ## Project Structure
 
 ```
-├── MNIST_ANN.py         # Script to train the ANN model on the custom dataset
+├── CUSTOM_ANN.py         # Script to train the ANN model on the custom dataset
 ├── calculator.py        # Main application script for the virtual calculator
 ├── custom_hand_data.zip # Custom Dataset,ensure that it is present in the working directory
 ```
