@@ -7,7 +7,7 @@ import numpy as np
 import pandas as pd
 from joblib import load
 import tensorflow as tf
-model=tf.keras.models.load_model("mnist_ann_on_custom.h5")
+model=tf.keras.models.load_model("ann_on_custom.h5")
 
 
 print(np.__version__)
