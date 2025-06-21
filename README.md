@@ -56,7 +56,7 @@ A Python-based virtual calculator that leverages OpenCV for real-time hand gestu
    ```
 
    A window will open using your webcam. Use hand gestures to input numbers and perform calculations.
-### Demo Video:
+## Demo Video:
 https://youtu.be/kEPfQGFMVKs
 
 ## Project Structure
